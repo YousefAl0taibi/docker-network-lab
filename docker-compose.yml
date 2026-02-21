@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  
+  web_server:
+    build: .  # To read the Docker file in the same directory
+    container_name: yousef-web-lab
+    ports:
+      - "8088:80"
+    networks:
+      - lab_network
+
+  db_server:
+    image: redis:alpine
+    container_name: database-backend
+    networks:
+      - lab_network
+
+networks:
+  lab_network:
+    driver: bridge
